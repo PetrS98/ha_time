@@ -1,0 +1,10 @@
+{
+  "domain": "ha_time",
+  "name": "Time",
+  "documentation": "",
+  "dependencies": [],
+  "codeowners": [],
+  "requirements": ["requests"],
+  "iot_class": "cloud_polling",
+  "version": "1.0.0"
+}
