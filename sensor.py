@@ -54,7 +54,7 @@ class CustomTime(SensorEntity):
         if MainValNumber < 0 or MainValNumber > 4:
             self._mainValNumber = 0
         else:
-            self._mainValNumbe = MainValNumber
+            self._mainValNumber = MainValNumber
          
 
     @property
