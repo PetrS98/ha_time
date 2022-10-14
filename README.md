@@ -18,7 +18,7 @@ Once you've installed the custom integration, add the following to your `configu
 
 ```yaml
 sensor:
-  - platform: ha_time       # # Name of Addon folder
+  - platform: ha_time       # Name of Addon folder
     settings: 0             # Settings for time or date format. From 0 to 4.
     scan_interval: 1        # Scan interval.
 ```
