@@ -45,11 +45,13 @@ class CustomTime(SensorEntity):
                 12: "prosince"
             }
     DateTimes = []
+    Attributes = []
 
     def __init__(self, MainValNumber):
         """Initialize the sensor."""
 
         self._available = None
+        self._value = None
 
         if MainValNumber < 0 or MainValNumber > 4:
             self._mainValNumber = 0
@@ -69,7 +71,17 @@ class CustomTime(SensorEntity):
     @property
     def native_value(self):
         """Return the native value of the sensor."""
-        return self.DateTimes[self._mainValNumber]
+        return self._value
+
+    @property
+    def extra_state_attributes(self):
+        
+        return {
+            "1": self.Attributes[0],
+            "2": self.Attributes[1],
+            "3": self.Attributes[2],
+            "4": self.Attributes[3]
+        }
 
     @property
     def available(self):
@@ -90,6 +102,16 @@ class CustomTime(SensorEntity):
             self.DateTimes.append(ActualDateTime.strftime("%d.%m.%Y"))
             self.DateTimes.append(ActualDateTime.strftime("%d." + self.CZMonthName[ActualDateTime.month] + " %Y"))
             self.DateTimes.append(ActualDateTime.strftime("%H:%M:%S"))
+
+            self._value = self.DateTimes[self._mainValNumber]
+
+            for x in range(len(self.DateTimes)):
+                if x == self._mainValNumber:
+                    continue
+                else:
+                    self.Attributes.append(self.DateTimes[x])
+
+
             self._available = True
         except:
             _LOGGER.exception("Error occured.")
