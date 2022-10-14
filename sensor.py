@@ -44,7 +44,7 @@ class CustomTime(SensorEntity):
                 11: "listopadu",
                 12: "prosince"
             }
-    Strings = []
+    DateTimes = []
 
     def __init__(self, MainValNumber):
         """Initialize the sensor."""
@@ -69,7 +69,7 @@ class CustomTime(SensorEntity):
     @property
     def native_value(self):
         """Return the native value of the sensor."""
-        return self.Strings[self._mainValNumber]
+        return self.DateTimes[self._mainValNumber]
 
     @property
     def available(self):
@@ -83,12 +83,13 @@ class CustomTime(SensorEntity):
         """
         try:
             ActualDateTime = datetime.datetime.now()
+            self.DateTimes.clear()
 
-            self.Strings.append(ActualDateTime.strftime("%d.%m.%Y %H:%M:%S"))
-            self.Strings.append(ActualDateTime.strftime("%d." + self.CZMonthName[ActualDateTime.month] + " %Y %H:%M:%S"))
-            self.Strings.append(ActualDateTime.strftime("%d.%m.%Y"))
-            self.Strings.append(ActualDateTime.strftime("%d." + self.CZMonthName[ActualDateTime.month] + " %Y"))
-            self.Strings.append(ActualDateTime.strftime("%H:%M:%S"))
+            self.DateTimes.append(ActualDateTime.strftime("%d.%m.%Y %H:%M:%S"))
+            self.DateTimes.append(ActualDateTime.strftime("%d." + self.CZMonthName[ActualDateTime.month] + " %Y %H:%M:%S"))
+            self.DateTimes.append(ActualDateTime.strftime("%d.%m.%Y"))
+            self.DateTimes.append(ActualDateTime.strftime("%d." + self.CZMonthName[ActualDateTime.month] + " %Y"))
+            self.DateTimes.append(ActualDateTime.strftime("%H:%M:%S"))
             self._available = True
         except:
             _LOGGER.exception("Error occured.")
