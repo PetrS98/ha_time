@@ -6,6 +6,14 @@ This is an integration providing time/date or timedate sensor.
 
 If you're using HACS - feel free to add https://github.com/PetrS98/ha_time as custom repository.
 
+### Settings fromat
+
+0 = 14.10.2022 16:07:23
+1 = 14.října 2022 16:07:23
+2 = 14.10.2022
+3 = 14.října 2022
+4 = 16:07:23
+
 Once you've installed the custom integration, add the following to your `configuration.yaml` file:
 
 ```yaml
