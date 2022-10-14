@@ -55,7 +55,6 @@ class CustomTime(SensorEntity):
             self._mainValNumber = 0
         else:
             self._mainValNumber = MainValNumber
-         
 
     @property
     def unique_id(self):
@@ -71,7 +70,7 @@ class CustomTime(SensorEntity):
     def native_value(self):
         """Return the native value of the sensor."""
         return self.Strings[self._mainValNumber]
-       
+
     @property
     def available(self):
         """Return True if entity is available."""
